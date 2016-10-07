@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		//--------- let ---------//
+		//定義變數用於Block Scope內//
+		//只要在{}內就可以達成      //
+		//須在呼叫前先定義          //
+		//-----------------------//
+		for(let variable1 = 0 ; variable1 < 10 ; variable1++){
+			console.log('let: ' + variable1);
+			setTimeout(function(){
+				console.log('let setTimeout: ' + variable1);// let 會保有當時的數值，因為他在block scope裡面
+			},1000);
+		}
+
+		for(var variable2 = 0 ; variable2 < 10 ; variable2++){
+			console.log('var: ' + variable2);
+			setTimeout(function(){
+				console.log('var setTimeout: ' + variable2);// var 會顯示最後的數值10。
+			},1000);
+		}
+
+		let variable3;
+		variable3 = 3;
+		console.log('variable3: ' + variable3);
+
+		try{
+			console.log(variable4);// Temporal Dead Zone
+			let variable4 = 4; // 有別於var的top-level，會自動變成undefined，let必須在呼叫前先定義
+		}catch(e){
+			console.log(e);
+		}
+
+		//--------- const ---------//
+		//定義變數用於Block Scope內  //
+		//只要在{}內就可以達成        //
+		//定義後不可改變             //
+		//須在呼叫前先定義            //
+		//-------------------------//
+		try{
+			const variable5 = 5;
+			variable5 = 6;
+		}catch(e){
+			console.log(e);
+		}
+
+
+		//--------- Scope ---------//
+		
+		// Global variable
+		var name1 = 'kyle';
+		console.log('Global Variable: ',name1);
+
+		// IFFE
+		(function(){
+			var name2 = 'kyle';
+			console.log('IFFE Variable: ',name2);
+		})();
+		try{
+			console.log('Global Variable: ',name2);
+		}catch(e){
+			console.log(e);
+		}
+
+		// Block Scope ES6
+		{
+			let name3 = 'kyle';
+			console.log('Block Scope: ',name3);
+		}
+		try{
+			console.log('Block Scope: ',name3);//會error，因為name3被定義在Block裡面，對Global來說並沒有這個變數
+		}catch(e){
+			console.log(e);
+		}
+
+	</script>
+</body>
+</html>
