@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		const name = 'kyle';
+		const age = 5;
+		const sentence = 'My dog ' + name + ' is ' + age * 5 + ' year old.';
+		const sentence1 = `My dog ${name} is ${age * 5} year old.`;
+		console.log(sentence);
+		console.log(sentence1);
+
+		const person = {
+			name: 'kyle',
+			job: 'Web Developer',
+			city: 'Taipei',
+			bio: 'Super Cool!'
+		}
+
+		var text = 'Kyle \
+Super \
+cool.'
+		const markup = `
+			<h1>${person.name}</h1>
+			<p>${person.job}</p>
+			<p>${person.city}</p>
+			<p>${person.bio}</p>
+		`
+		document.body.innerHTML = markup;
+		
+
+		const dogs = [
+			{name: 'a dog', age: 2},
+			{name: 'b dog', age: 4},
+			{name: 'c dog', age: 8},
+		];
+
+		const markup1 = `
+			<ul class="dog">
+				${dogs.map(dog => `<li>${dog.name}<br/>${dog.age}</li>`)}
+			</ul>
+		`;
+		console.log(markup1);
+
+		const markup2 = `
+			<ul class="dog">
+				${dogs.map(dog => `<li>${dog.name}<br/>${dog.age}</li>`).join('')}
+			</ul>
+		`;
+		console.log(markup2);
+
+		const song = {
+			name: 'Dream song',
+			artist: 'kyle',
+			feature: 'biggest'
+		}
+
+		const markup3 = `
+			<p>${song.name}</p>
+			<p>${song.artist}</p>
+			${song.feature ? `${song.feature}` : ``}
+		`;
+
+		document.body.innerHTML += markup3;
+
+		function highlight(strings, ...values){
+			let str = '';
+			strings.forEach((string, i) => {
+				str += `${string}<span contenteditable class="h1">${values[i] || ''}</span>`;
+			});
+			return str;
+		}
+
+		const dogname = 'doggy';
+		const dogage = 2;
+		const markup4 = highlight`My dog's name is ${dogname} and he is ${dogage} years old`;
+		document.body.innerHTML += markup4;
+	</script>
+</body>
+</html>
