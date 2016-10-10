@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//----- object -------//
+		const person = {
+			first: 'kyle',
+			last: 'cheng',
+			country: 'Taiwan',
+			city: 'Taipei',
+			git: 'ge6285790',
+			links: {
+				social:{
+					myPage: 'myPage',
+					otherPage: 'otherPage',
+				}
+			}
+		}
+
+		const first1 = person.first;
+		const last1 = person.last;
+		console.log(first1,last1);
+
+		const {first, last} = person;
+		console.log(first,last);	
+		
+		//巢狀
+		const {myPage, otherPage} = person.links.social;
+		console.log(myPage, otherPage);
+
+		//rename
+		const {myPage: myPg, otherPage: otherPg} = person.links.social;
+		console.log(myPg, otherPg);
+
+		//default setting
+		const setting = {
+			width: 300,
+			color: 'black'
+		}
+		const {width = 100, height = 100, color = 'blue', fontSize = 24} = setting;
+		console.log(width, height, color, fontSize);
+
+		const {width:wd = 100, height:he = 100, color:co = 'blue', fontSize:fs = 24} = setting;
+		console.log(wd, he, co, fs);
+
+		//----- arrays -------//
+		const details = ['kyle cheng', 123, 'kerker'];
+		const [name, id, say] = details;
+		console.log(name, id, say);
+
+		const data = 'bg,fb,tw';
+		const [bg,fb,tw] = data.split(',');
+		console.log(bg,fb,tw);
+
+		//rest operator
+		const team = ['kk', 'aa', 'cc', 'dd'];
+		const [one, two, ...theOther] = team;
+		console.log(one,two,theOther);
+	</script>
+</body>
+</html>

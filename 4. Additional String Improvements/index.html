@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		const course = "RFB2";
+		const number1 = '20-AC2016-az';
+		const number2 = '2554678RT0001';
+		const make = 'SYM';
+		const model = 'Jet Power';
+		const colour = 'White';
+
+		//.startsWith()
+		course.startsWith('RFB'); //true
+		course.startsWith('rfb'); //false
+
+		number1.startsWith('AC'); //false
+		number1.startsWith('AC',3); //true
+
+		//.endsWith()
+		number1.endsWith('az'); //true
+		number2.endsWith('RT',9); //true
+
+		//.includes()
+		number1.includes('AC'); //true
+		number1.includes('ac'); //false
+
+		//.repeat()
+		'a'.repeat(3); //aaa
+
+		function leftPad(str, length = 20){
+			return `=> ${' '.repeat(length - str.length)}${str}`
+		}
+		
+		console.log(leftPad(make));
+		console.log(leftPad(model));
+		console.log(leftPad(colour));
+	</script>
+</body>
+</html>

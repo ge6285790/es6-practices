@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box"></div>
+	<script>
+		const desc = {
+			HTML: 'I love HTML',
+			CSS: 'I love CSS',
+			JS: 'I love JS'
+		}
+
+		function addAbbreviations(strings, ...values){
+			const abbreviated = values.map(value => {
+				if(desc[value]){
+					return `<abbr title="${desc[value]}">${value}</abbr>`;
+				}
+				return value;
+			});
+			console.log(abbreviated);
+			return strings.reduce((sentence, string, i) => {
+				return `${sentence}${string}${abbreviated[i] || ''}`
+			},'');
+		}
+		const name = 'kyle';
+		const sentence = addAbbreviations`我名字是 ${name} 我最喜歡打 ${'HTML'}, ${'CSS'}, ${'JS'}.`
+		const box = document.querySelector('.box');
+		const p = document.createElement('p');
+		p.innerHTML = sentence;
+		bio.appendChild(p);
+
+
+	</script>
+</body>
+</html>

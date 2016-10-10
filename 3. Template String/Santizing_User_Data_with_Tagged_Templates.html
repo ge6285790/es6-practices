@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<box class="bio"></box>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/0.8.2/purify.min.js"></script>
+	<script>
+
+		function sanitize(strings, ...values){
+			const dirtyCode = strings.reduce((code, string, i) => {
+				return `${code}${string}${values[i] || ''}`
+			},'');
+			return DOMPurify.sanitize(dirtyCode);
+		}
+
+		const name = 'kyle';
+		const about = sanitize`關於我<img src="http://unsplash.it/100/100?random" onload="alert('你被駭了');" />`;
+
+		const html = `
+			<h3>${name}</h3>
+			<p>${about}</p>
+		`;
+
+		const box = document.querySelector('.bio');
+		const p = document.createElement('p');
+
+		p.innerHTML = html;
+		box.appendChild(p);
+	</script>
+</body>
+</html>
