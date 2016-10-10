@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		const cuts = ['a', 'b', 'c', 'd', 'e'];
+		Array.prototype.aa = function(){
+			let a = '1'
+		}
+
+		// 方法一
+		for(let i = 0;i<=cuts.length-1;i++){
+			console.log('方法一: ',cuts[i]);
+		}
+
+		// 方法二
+		cuts.forEach((cut)=>{ // 沒有continue & break;
+			console.log('方法二: ',cut);
+		});
+
+		// 方法三
+		for(const index in cuts){ // 這個方法會連加入新到array裡面的prototype都印出來
+			console.log('方法三: ',cuts[index]);
+		}
+
+		// 方法四 最好的
+		for(const cut of cuts){
+			if(cut === 'c'){
+				break;
+			}
+			console.log('方法四: ',cut);
+		}
+
+		for(const cut of cuts.entries()){
+			console.log(cut);
+		}	
+
+		for(const [i,cut] of cuts.entries()){
+			console.log(i,cut);
+		}		
+
+		function addNum(){
+			console.log(arguments); // => this is not array
+			let total = 0;
+			for(const num of arguments){
+				total += num;
+			}
+			console.log(total);
+			return total;
+		}
+
+		addNum(10,24,3,6,34,557,12);
+
+		const apple = { // is not Iterable
+			color: 'red',
+			size: 'medium',
+			weight: 50,
+			sugar: 10
+		}
+
+		// for(const prop of apple){ // can't use ,ES2017 can use
+		// 	console.log(prop);
+		// }
+		for(const prop of Object.keys(apple)){
+			const value = apple[prop];
+			console.log(value,prop);
+		}
+	</script>
+</body>
+</html>

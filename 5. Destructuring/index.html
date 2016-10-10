@@ -60,6 +60,34 @@
 		const team = ['kk', 'aa', 'cc', 'dd'];
 		const [one, two, ...theOther] = team;
 		console.log(one,two,theOther);
+
+		//額外運用
+		let inStatus = 'in';
+		let outStatus = 'out';
+
+		[inStatus, outStatus] = [outStatus, inStatus];
+
+		//function運用
+		function convertCurrency(amount){
+			const converted = {
+				USD: amount * 0.76,
+				GPB: amount * 0.53,
+				AUD: amount * 1.01,
+				MEX: amount * 13.30
+			};
+			return converted
+		}
+
+		const hundo = convertCurrency(100);
+		console.log(hundo.AUD);
+		console.log(hundo.USD);
+
+		function tipCalc({total = 100, tip = 0.15, tax = 0.3} = {}){ // = {} 是用來指對方沒有傳任何東西時，我們把預設物件帶進去
+			return total + (tip * total) + (tax * total);
+		}
+		const bill = tipCalc();
+		const bill1 = tipCalc({total: 10});
+		console.log(bill, bill1);
 	</script>
 </body>
 </html>
